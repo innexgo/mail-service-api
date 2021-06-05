@@ -12,9 +12,8 @@ pub enum MailError {
 #[derive(Clone, Debug, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Mail {
-  mail_id: i64,
-  creation_time: i64,
-  destination: String,
-  title: String,
-  content: String,
+  pub creation_time: i64,
+  pub destination: String,
+  pub title: String,
+  pub content: String,
 }

@@ -30,7 +30,7 @@ impl MailService {
         };
 
         self.client
-            .post(format!("{}/mail", self.mail_service_url))
+            .post(format!("{}/mail/new", self.mail_service_url))
             .json(&mnr)
             .send()
             .await

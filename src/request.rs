@@ -5,6 +5,7 @@ use serde::{Deserialize, Serialize};
 #[serde(rename_all = "camelCase")]
 pub struct MailNewProps {
   pub request_id:i64,
+  pub topic:String,
   pub destination:String,
   pub title:String,
   pub content:String,

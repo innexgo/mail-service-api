@@ -32,10 +32,10 @@ impl MailService {
       .json(&props)
       .send()
       .await
-      .map_err(|_| response::MailError::Unknown)?
+      .map_err(|_| response::MailError::NetworkError)?
       .json()
       .await
-      .map_err(|_| response::MailError::Unknown)?
+      .map_err(|_| response::MailError::DecodeError)?
   }
 
   pub async fn mail_view(
@@ -48,9 +48,9 @@ impl MailService {
       .json(&props)
       .send()
       .await
-      .map_err(|_| response::MailError::Unknown)?
+      .map_err(|_| response::MailError::NetworkError)?
       .json()
       .await
-      .map_err(|_| response::MailError::Unknown)?
+      .map_err(|_| response::MailError::DecodeError)?
   }
 }

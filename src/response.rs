@@ -6,6 +6,9 @@ use strum::AsRefStr;
 pub enum MailError {
   DestinationProhibited,
   DestinationBounced,
+  InternalServerError,
+  NetworkError,
+  DecodeError,
   Unknown,
 }
 

@@ -22,14 +22,30 @@ impl MailService {
   // topic is the description of the email for internal use
   // title is the reciever visible title
   // content is the content of the message
-  pub async fn mail(
+  pub async fn mail_new(
     &self,
     props: request::MailNewProps,
   ) -> Result<response::Mail, response::MailError> {
     self
       .client
       .post(format!("{}/mail/new", self.mail_service_url))
-      .json(&mnr)
+      .json(&props)
+      .send()
+      .await
+      .map_err(|_| response::MailError::Unknown)?
+      .json()
+      .await
+      .map_err(|_| response::MailError::Unknown)?
+  }
+
+  pub async fn mail_view(
+    &self,
+    props: request::MailViewProps,
+  ) -> Result<Vec<response::Mail>, response::MailError> {
+    self
+      .client
+      .post(format!("{}/mail/view", self.mail_service_url))
+      .json(&props)
       .send()
       .await
       .map_err(|_| response::MailError::Unknown)?

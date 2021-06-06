@@ -15,3 +15,5 @@ tokio = { version = "1", features=["full"], optional=true}
 
 [features]
 client = ["reqwest", "tokio"]
+# for dev purposes
+default = ["client"]

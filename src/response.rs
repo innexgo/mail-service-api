@@ -9,8 +9,19 @@ pub enum MailError {
   InternalServerError,
   NetworkError,
   DecodeError,
+  NotFound,
+  MethodNotAllowed,
+  BadRequest,
   Unknown,
 }
+
+impl std::fmt::Display for MailError {
+  fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+    write!(f, "{}", self.as_ref())
+  }
+}
+
+impl std::error::Error for MailError { }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]

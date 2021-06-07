@@ -26,23 +26,16 @@ impl MailService {
     &self,
     props: request::MailNewProps,
   ) -> Result<response::Mail, response::MailError> {
-    let foo = self
+    self
       .client
       .post(format!("{}/mail/new", self.mail_service_url))
       .json(&props)
       .send()
       .await
-      .map_err(|_| response::MailError::NetworkError)?;
-
-
-    dbg!(foo.text().await);
-
-    Err(response::MailError::DecodeError)
-
-    //foo
-    //  .json::<Result<response::Mail, response::MailError>>()
-    //  .await
-    //  .map_err(|_| response::MailError::DecodeError)?
+      .map_err(|_| response::MailError::NetworkError)?
+      .json::<Result<response::Mail, response::MailError>>()
+      .await
+      .map_err(|_| response::MailError::DecodeError)?
   }
 
   pub async fn mail_view(

@@ -33,7 +33,7 @@ impl MailService {
       .send()
       .await
       .map_err(|_| response::MailError::NetworkError)?
-      .json::<Result<response::Mail, response::MailError>>()
+      .json()
       .await
       .map_err(|_| response::MailError::DecodeError)?
   }

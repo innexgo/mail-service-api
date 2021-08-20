@@ -53,4 +53,19 @@ impl MailService {
       .await
       .map_err(|_| response::MailError::DecodeError)?
   }
+
+  // fetches api information
+  pub async fn info(
+    &self,
+  ) -> Result<Vec<response::Info>, response::MailError> {
+    self
+      .client
+      .post(format!("{}/public/info", self.mail_service_url))
+      .send()
+      .await
+      .map_err(|_| response::MailError::NetworkError)?
+      .json()
+      .await
+      .map_err(|_| response::MailError::DecodeError)?
+  }
 }

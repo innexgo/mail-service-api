@@ -34,3 +34,12 @@ pub struct Mail {
   pub title: String,
   pub content: String,
 }
+
+#[derive(Clone, Debug, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct Info {
+  pub service: String,
+  pub version_major: i64,
+  pub version_minor: i64,
+  pub version_rev: i64,
+}

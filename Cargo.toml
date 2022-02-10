@@ -6,12 +6,12 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-serde = { version = "1.0.130", features = ["derive"] }
+serde = { version = "1.0.136", features = ["derive"] }
 strum = { version = "0.23.0", features = ["derive"] }
 
 # these deps are needed when building a client
-reqwest = { version = "0.11.6", features = ["json"], optional = true }
-tokio = { version = "1.14.0", features = ["full"], optional = true }
+reqwest = { version = "0.11.9", features = ["json"], optional = true }
+tokio = { version = "1.16.1", features = ["full"], optional = true }
 
 [features]
 client = ["reqwest", "tokio"]

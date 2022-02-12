@@ -28,7 +28,7 @@ impl MailService {
   ) -> Result<response::Mail, response::MailError> {
     self
       .client
-      .post(format!("{}/mail/new", self.mail_service_url))
+      .post(format!("{}/mail_new", self.mail_service_url))
       .json(&props)
       .send()
       .await
@@ -44,7 +44,7 @@ impl MailService {
   ) -> Result<Vec<response::Mail>, response::MailError> {
     self
       .client
-      .post(format!("{}/mail/view", self.mail_service_url))
+      .post(format!("{}/mail_view", self.mail_service_url))
       .json(&props)
       .send()
       .await

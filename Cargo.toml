@@ -7,11 +7,11 @@ edition = "2021"
 
 [dependencies]
 serde = { version = "1.0.136", features = ["derive"] }
-strum = { version = "0.23.0", features = ["derive"] }
+strum = { version = "0.24.0", features = ["derive"] }
 
 # these deps are needed when building a client
-reqwest = { version = "0.11.9", features = ["json"], optional = true }
-tokio = { version = "1.16.1", features = ["full"], optional = true }
+reqwest = { version = "0.11.10", features = ["json"], optional = true }
+tokio = { version = "1.18.0", features = ["full"], optional = true }
 
 [features]
 client = ["reqwest", "tokio"]
